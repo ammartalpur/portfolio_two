@@ -2,40 +2,79 @@ import { ArrowUpRight, Github } from "lucide-react";
 import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
 const projects = [
   {
-    title: "Fintech Dashboard",
+    id: 1,
+    title: "Socialogram",
     description:
-      "A comprehensive financial analytics platform with real-time data visualization, portfolio management, and AI-powered insights.",
+      "Socialogram, a full-stack social media web application built using modern web technologies with a strong focus on performance, scalability, and clean UI by using the power of Next.Js.",
     image: "/projects/project1.png",
-    tags: ["React", "Typescript", "NodeJS"],
-    link: "#",
-    github: "#",
+    tags: ["Next.js", "TailwindCSS", "Supabase", "Zod/Cloudinary"],
+    demoUrl: "https://next-social-gamma.vercel.app/",
+    githubUrl: "https://github.com/ammartalpur/next-social",
   },
   {
-    title: "E-Commerce Platform",
+    id: 2,
+    title: "Roozgar Job Portal",
     description:
-      "A full-featured e-commerce solution with inventory management, payment processing, and analytics dashboard.",
+      "Roozgar is a modern job portal built with React.js, designed to seamlessly connect job seekers with recruiters.",
     image: "/projects/project2.png",
-    tags: ["Next.js", "Stripe", "PostgreSQL", "Tailwind"],
-    link: "#",
-    github: "#",
+    tags: ["TypeScript", "Supabase", "Next.js"],
+    demoUrl: "https://roozgar-jobportal.vercel.app/",
+    githubUrl: "https://github.com/ammartalpur/roozgar-jobportal",
   },
   {
-    title: "AI Writing Assistant",
+    id: 3,
+    title: "Digital Voting System",
     description:
-      "An intelligent writing tool powered by GPT-4, helping users create better content faster.",
+      "Ditigal Voting System created in C++ with web based GUI and Facial Veification.",
     image: "/projects/project3.png",
-    tags: ["React", "OpenAI", "Python", "FastAPI"],
-    link: "#",
-    github: "#",
+    tags: ["Javascript", "HTML/CSS/EJS", "C++"],
+    demoUrl: "#",
+    githubUrl: "https://github.com/ammartalpur/digital_voting_system",
   },
   {
-    title: "Project Management Tool",
+    id: 4,
+    title: "Sportz - Websocket Project",
     description:
-      "A collaborative workspace for teams with real-time updates, task tracking, and integrations.",
-    image: "/projects/project4.png",
-    tags: ["Next.js", "Socket.io", "MongoDB", "Redis"],
-    link: "#",
-    github: "#",
+      "Sportz is a modern real-time sports tracking platform built to manage matches, live commentary, and instant updates for connected clients using WebSockets..",
+    image: "/projects/project4.PNG",
+    tags: [
+      "Next.js",
+      "Node(Express.js)",
+      "PostgreSQL",
+      "Drizzle ORM",
+      "WebSockets",
+      "Zod",
+      "Arcjet",
+    ],
+    demoUrl: "#",
+    githubUrl: "https://github.com/ammartalpur/sportz-websockets",
+  },
+  {
+    id: 5,
+    title: "Software House OS",
+    description:
+      "A comprehensive, role-based Project and Task Management operating system designed specifically for software development agencies. This system serves as a custom-tailored alternative to Jira or Trello, enforcing a strict, professional pipeline from project creation to Quality Assurance (QA) delivery.",
+    image: "/projects/project5.PNG",
+    tags: ["Next.js 15", "Tailwind CSS", "PostgreSQL", "Prisma", "Clerk"],
+    demoUrl: "#",
+    githubUrl: "https://github.com/ammartalpur/software-house-os",
+  },
+  {
+    id: 6,
+    title: "ProKitchen POS System",
+    description:
+      "A high-performance, real-time Point of Sale (POS) and Kitchen Display System (KDS) designed for modern restaurant environments. Built with a focus on operational speed, data integrity, and real-time synchronization between the front-of-house and back-of-house.",
+    image: "/projects/project6.PNG",
+    tags: [
+      "Next.js 15",
+      "Tailwind CSS",
+      "PostgreSQL",
+      "Websockets",
+      "Clerk",
+      "Cloudinary",
+    ],
+    demoUrl: "#",
+    githubUrl: "https://github.com/ammartalpur/point-of-sale",
   },
 ];
 
@@ -44,7 +83,7 @@ export const Projects = () => {
     <section id="projects" className="py-32 relative overflow-hidden">
       {/* Bg glows */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-highlight/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 left-0 w-64 h-64 bg-foreground/5 rounded-full blur-3xl" />
       <div className="container mx-auto px-6 relative z-10">
         {/* Section Header */}
         <div className="text-center mx-auto max-w-3xl mb-16">
@@ -53,7 +92,7 @@ export const Projects = () => {
           </span>
           <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 animate-fade-in animation-delay-100 text-secondary-foreground">
             Projects that
-            <span className="font-serif italic font-normal text-white">
+            <span className="font-serif italic font-normal text-foreground">
               {" "}
               make an impact.
             </span>
@@ -68,7 +107,7 @@ export const Projects = () => {
         <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, idx) => (
             <div
-              key={idx}
+              key={project.id}
               className="group glass rounded-2xl overflow-hidden animate-fade-in md:row-span-1"
               style={{ animationDelay: `${(idx + 1) * 100}ms` }}
             >
@@ -87,14 +126,14 @@ export const Projects = () => {
                 {/* Overlay Links */}
                 <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <a
-                    href={project.link}
-                    className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
+                    href={project.demoUrl}
+                    className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all duration-300"
                   >
                     <ArrowUpRight className="w-5 h-5" />
                   </a>
                   <a
-                    href={project.github}
-                    className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all"
+                    href={project.githubUrl}
+                    className="p-3 rounded-full glass hover:bg-primary hover:text-primary-foreground transition-all duration-300"
                   >
                     <Github className="w-5 h-5" />
                   </a>

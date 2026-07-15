@@ -79,7 +79,7 @@ export const Testimonials = () => {
             Kind words from{" "}
             <span
               className="font-serif italic 
-            font-normal text-white"
+            font-normal text-foreground"
             >
               amazing people.
             </span>
@@ -91,7 +91,7 @@ export const Testimonials = () => {
           <div className="relative">
             {/* Main Testimonial */}
             <div className="glass p-8 rounded-3xl md:p-12 glow-border animate-fade-in animation-delay-200">
-              <div className="absolute -top-4 left-8 w-12 h-12 rounded-full bg-primary flex items-center justify-center">
+              <div className="absolute -top-4 left-8 w-12 h-12 rounded-full bg-primary flex items-center justify-center shadow-[0_0_18px_rgba(140,255,0,0.8)]">
                 <Quote className="w-6 h-6 text-primary-foreground" />
               </div>
 
@@ -128,6 +128,7 @@ export const Testimonials = () => {
               <div className="flex gap-2">
                 {testimonials.map((_, idx) => (
                   <button
+                    key={idx}
                     onClick={() => setActiveIdx(idx)}
                     className={`w-2 h-2 rounded-full transition-all duration-300 ${
                       idx === activeIdx

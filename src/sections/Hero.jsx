@@ -9,6 +9,11 @@ import {
 } from "lucide-react";
 import { AnimatedBorderButton } from "../components/AnimatedBorderButton";
 
+const NAME = "Ammar Talpur";
+const ROLE = "Software Engineer";
+const BIO =
+  "Helping businesses become what they deserve to be—stronger, smarter, and ready for the future.";
+
 const skills = [
   "React",
   "Next.js",
@@ -30,171 +35,198 @@ const skills = [
   "GitHub Actions",
 ];
 
+const socials = [
+  { icon: Github, href: "https://github.com/ammartalpur", label: "GitHub" },
+  {
+    icon: Linkedin,
+    href: "https://www.linkedin.com/in/ammar-talpur-6b77a327a/",
+    label: "LinkedIn",
+  },
+  { icon: Twitter, href: "#", label: "Twitter" },
+];
+
+const RESUME_URL =
+  "https://drive.google.com/uc?export=download&id=1gz6t7EQq3TbMLffCOy9YkbZUMNJ3xao9";
+
+const stats = [
+  {
+    value: "08+",
+    label: "Years Coding",
+    detail: "Building, learning, and improving with every shipped product.",
+  },
+  {
+    value: "03+",
+    label: "Products Shipped",
+    detail: "Turning ideas into reliable software that solves real problems.",
+  },
+  {
+    value: "15,000+",
+    label: "Users Impacted",
+    detail: "Creating digital experiences that help teams move forward.",
+  },
+];
+
 export const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Bg */}
+    <section className="relative overflow-hidden">
+      {/* Background image + gradient */}
       <div className="absolute inset-0">
         <img
           src="/hero-bg.jpg"
-          alt="Hero image"
-          className="w-full h-full object-cover opacity-40"
+          alt=""
+          role="presentation"
+          className="h-full w-full object-cover opacity-40"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/80 to-background" />
+        <div className="absolute inset-0 bg-linear-to-b from-background/20 via-background/85 to-background" />
       </div>
 
-      {/* Green Dots */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(30)].map((_, i) => (
+      {/* Ambient dots */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden motion-reduce:hidden">
+        {[...Array(24)].map((_, i) => (
           <div
-            className="absolute w-1.5 h-1.5 rounded-full opacity-60"
+            key={i}
+            className="absolute h-1.5 w-1.5 rounded-full opacity-50"
             style={{
-              backgroundColor: "#20B2A6",
+              backgroundColor: "var(--color-primary)",
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              animation: `slow-drift ${
-                15 + Math.random() * 20
-              }s ease-in-out infinite`,
+              animation: `slow-drift ${15 + Math.random() * 20}s ease-in-out infinite`,
               animationDelay: `${Math.random() * 5}s`,
             }}
           />
         ))}
       </div>
 
-      {/* Content */}
-      <div className="container mx-auto px-6 pt-32 pb-20 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column - Text Content */}
-          <div className="space-y-8">
-            <div className="animate-fade-in">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-sm text-primary">
-                <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                Software Engineer • React Specialist
-              </span>
-            </div>
+      {/* ============ Main hero content ============ */}
+      <div className="relative z-10 container mx-auto px-6 pt-32 pb-24 md:pt-40 md:pb-28">
+        <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 lg:grid-cols-12 lg:gap-12">
+          {/* ---- Copy column ---- */}
+          <div className="order-2 flex flex-col items-center gap-6 text-center lg:order-1 lg:col-span-7 lg:items-start lg:text-left">
+            <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm text-primary">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-primary motion-reduce:animate-none" />
+              {ROLE}
+            </span>
 
-            {/* Headline */}
-            <div className="space-y-4">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in animation-delay-100">
-                Crafting <span className="text-primary glow-text">digital</span>
-                <br />
-                experiences with
-                <br />
-                <span className="font-serif italic font-normal text-white">
-                  precision.
-                </span>
-              </h1>
-              <p className="text-lg text-muted-foreground max-w-lg animate-fade-in animation-delay-200">
-                Hi, I'm Pedro Machado — a software engineer specializing in
-                React, Next.js, and TypeScript. I build scalable, performant web
-                applications that users love.
-              </p>
-            </div>
+            <h1 className="text-5xl font-bold leading-[1.05] tracking-tight text-foreground md:text-7xl">
+              {NAME}
+            </h1>
 
-            {/* CTAs */}
-            <div className="flex flex-wrap gap-4 animate-fade-in animation-delay-300">
-              <Button size="lg">
-                Contact Me <ArrowRight className="w-5 h-5" />
-              </Button>
+            <p className="max-w-xl text-lg text-muted-foreground md:text-xl">
+              {BIO}
+            </p>
+
+            <div className="mt-2 flex flex-col gap-4 sm:flex-row">
               <AnimatedBorderButton>
-                <Download className="w-5 h-5" />
-                Download CV
+                View My Work
+                <ArrowRight className="ml-2 h-4 w-4" />
               </AnimatedBorderButton>
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={() =>
+                  window.open(RESUME_URL, "_blank", "noopener,noreferrer")
+                }
+              >
+                <Download className="mr-2 h-4 w-4" />
+                Download Résumé
+              </Button>
             </div>
 
-            {/* Social Links */}
-            <div className="flex items-center gap-4 animate-fade-in animation-delay-400">
-              <span className="text-sm text-muted-foreground">Follow me: </span>
-              {[
-                { icon: Github, href: "#" },
-                { icon: Linkedin, href: "#" },
-                { icon: Twitter, href: "#" },
-              ].map((social, idx) => (
-                <a
-                  key={idx}
-                  href={social.href}
-                  className="p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all duration-300"
-                >
-                  {<social.icon className="w-5 h-5" />}
-                </a>
-              ))}
+            <div className="mt-4 flex items-center gap-4">
+              <span className="text-sm text-muted-foreground">Follow me:</span>
+              <div className="flex items-center gap-2">
+                {socials.map(({ icon: Icon, href, label }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    aria-label={label}
+                    className="glass rounded-full p-2 transition-all duration-300 hover:bg-primary/10 hover:text-primary"
+                  >
+                    <Icon className="h-5 w-5" />
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
-          {/* Right Column - Profile Image */}
-          <div className="relatice animate-fade-in animation-delay-300">
-            {/* Profile Image */}
-            <div className="relative max-w-md mx-auto">
-              <div
-                className="absolute inset-0 
-              rounded-3xl bg-gradient-to-br 
-              from-primary/30 via-transparent 
-              to-primary/10 blur-2xl animate-pulse"
-              />
-              <div className="relative glass rounded-3xl p-2 glow-border">
-                <img
-                  src="/profile-photo.jpg"
-                  alt="Pedro Machado"
-                  className="w-full aspect-[4/5] object-cover rounded-2xl"
-                />
 
-                {/* Floating Badge */}
-                <div className="absolute -bottom-4 -right-4 glass rounded-xl px-4 py-3 animate-float">
-                  <div className="flex items-center gap-3">
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
-                    <span className="text-sm font-medium">
-                      Available for work
-                    </span>
-                  </div>
-                </div>
-                {/* Stats Badge */}
-                <div className="absolute -top-4 -left-4 glass rounded-xl px-4 py-3 animate-float animation-delay-500">
-                  <div className="text-2xl font-bold text-primary">5+</div>
-                  <div className="text-xs text-muted-foreground">
-                    Years Exp.
-                  </div>
-                </div>
+          {/* ---- Photo column ---- */}
+          <div className="order-1 lg:order-2 lg:col-span-5">
+            <div className="relative mx-auto max-w-sm">
+              <div className="absolute -inset-8 -z-10 rounded-[2rem] bg-primary/15 blur-3xl" />
+              <div className="glass glow-border rounded-[2rem] p-3">
+                <img
+                  src="/profile-photo.png"
+                  alt={NAME}
+                  className="aspect-4/5 w-full rounded-[1.5rem] object-cover"
+                />
               </div>
             </div>
           </div>
         </div>
 
-        {/* Skills Section */}
-        <div className="mt-20 animate-fade-in animation-delay-600">
-          <p className="text-sm text-muted-foreground mb-6 text-center">
-            Technologies I work with
-          </p>
-          <div className="relative overflow-hidden">
-            <div
-              className="absolute left-0 top-0 bottom-0 w-32
-             bg-gradient-to-r from-background to-transparent z-10"
-            />
-            <div
-              className="absolute right-0 top-0 bottom-0 w-32
-             bg-gradient-to-l from-background to-transparent z-10"
-            />
-            <div className="flex animate-marquee">
-              {[...skills, ...skills].map((skill, idx) => (
-                <div key={idx} className="flex-shrink-0 px-8 py-4">
-                  <span className="text-xl font-semibold text-muted-foreground/50 hover:text-muted-foreground transition-colors">
-                    {skill}
-                  </span>
-                </div>
-              ))}
-            </div>
+        {/* ============ Vision / Mission ============ */}
+        <div className="mx-auto mt-24 grid max-w-6xl gap-6 md:grid-cols-2 md:gap-8">
+          <div className="rounded-[1.5rem] border border-primary/20 bg-background/30 p-8 backdrop-blur-md transition-transform duration-300 hover:-translate-y-0.5">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-primary">
+              Vision
+            </p>
+            <p className="text-xl font-bold leading-tight text-foreground md:text-2xl">
+              Build simple, useful, and beautiful digital experiences.
+            </p>
           </div>
+
+          <div className="rounded-[1.5rem] border border-primary/20 bg-background/30 p-8 backdrop-blur-md transition-transform duration-300 hover:-translate-y-0.5">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-primary">
+              Mission
+            </p>
+            <p className="text-xl font-bold leading-tight text-foreground md:text-2xl">
+              Turn ideas into polished products that people enjoy using.
+            </p>
+          </div>
+        </div>
+
+        {/* ============ Stats ============ */}
+        <div className="mx-auto mt-16 grid max-w-6xl gap-10 sm:grid-cols-3 sm:gap-8">
+          {stats.map((stat) => (
+            <div key={stat.label} className="border-t border-border/70 pt-6">
+              <p className="text-5xl font-semibold text-foreground md:text-6xl">
+                {stat.value}
+              </p>
+              <p className="mt-4 text-lg text-foreground">{stat.label}</p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                {stat.detail}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
 
-      <div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 
-      animate-fade-in animation-delay-800"
-      >
+      {/* ============ Skills marquee ============ */}
+      <div className="relative z-10 border-t border-border/60 py-14 md:py-16">
+        <p className="mb-8 text-center text-sm text-muted-foreground">
+          Technologies I work with
+        </p>
+        <div className="relative overflow-hidden">
+          <div className="absolute inset-y-0 left-0 z-10 w-24 bg-linear-to-r from-background to-transparent md:w-32" />
+          <div className="absolute inset-y-0 right-0 z-10 w-24 bg-linear-to-l from-background to-transparent md:w-32" />
+          <div className="flex animate-marquee motion-reduce:animate-none">
+            {[...skills, ...skills].map((skill, idx) => (
+              <div key={idx} className="shrink-0 px-6 md:px-8">
+                <span className="text-xl font-semibold text-muted-foreground/50 transition-colors hover:text-muted-foreground">
+                  {skill}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      {/* ============ Scroll cue ============ */}
         <a
           href="#about"
-          className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
+          className="mt-10 flex flex-col items-center gap-2 text-muted-foreground transition-colors hover:text-primary md:mt-12"
         >
           <span className="text-xs uppercase tracking-wider">Scroll</span>
-          <ChevronDown className="w-6 h-6 animate-bounce" />
+          <ChevronDown className="h-6 w-6 animate-bounce motion-reduce:animate-none" />
         </a>
       </div>
     </section>
